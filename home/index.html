@@ -3,42 +3,51 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="BookMyMetal — discover industrial products through video.">
-<title>BookMyMetal — Home</title>
+<meta name="description" content="BookMyMetal — see, understand and source industrial products through video.">
+<title>BookMyMetal — Video-first B2B marketplace</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <header class="topbar">
-  <a class="brand" href="/"><span>BOOK</span><b>MY</b><span>METAL</span></a>
-  <div class="search"><span>⌕</span><input id="searchInput" type="search" placeholder="Search products, materials, services..." aria-label="Search"></div>
-  <nav><a class="active" href="/home/">Home</a><a href="#categories">Categories</a><a href="#sell">Sell</a><a href="#account">Account</a></nav>
+  <a class="brand" href="/home/"><span>BOOK</span><b>MY</b><span>METAL</span></a>
+  <div class="search"><span>⌕</span><input id="searchInput" type="search" placeholder="Search products, services or companies" aria-label="Search"></div>
+  <nav><a class="active" href="/home/">Discover</a><a href="#categories">Categories</a><a href="#sell">Sell</a><a href="#account">Account</a></nav>
 </header>
 <main>
-<section class="hero-mini">
-  <div><p class="eyebrow">VIDEO-FIRST B2B MARKETPLACE</p><h1>See it. Understand it.<br><em>Buy it.</em></h1><p class="sub">Discover real industrial products through short videos.</p></div>
-  <button class="sell-btn" id="sell" onclick="location.href='#upload-coming'">＋ Sell a product</button>
+<section class="hero">
+  <div class="hero-copy">
+    <p class="eyebrow">VIDEO-FIRST B2B MARKETPLACE</p>
+    <h1>See it. Understand it.<br><em>Source it.</em></h1>
+    <p class="sub">Discover real industrial products, capabilities and suppliers through short videos — then compare, enquire and connect.</p>
+    <div class="hero-actions"><a class="hero-primary" href="#feed">Explore products</a><a class="hero-secondary" href="#sell">Sell on BookMyMetal</a></div>
+  </div>
+  <div class="hero-video">
+    <div class="video-frame"><video controls playsinline preload="metadata" poster="https://files2.heygen.ai/aws_pacific/avatar_tmp/1cbf34736a6c4e84a0ff4c7de37652e4/db6055f1f13052eb4619bd616c5df293.jpeg"><source src="https://files2.heygen.ai/aws_pacific/avatar_tmp/1cbf34736a6c4e84a0ff4c7de37652e4/db6055f1f13052eb4619bd616c5df293.mp4" type="video/mp4"></video><span class="video-label">WATCH HOW IT WORKS</span></div>
+  </div>
 </section>
 <section class="chips" id="categories" aria-label="Categories">
-  <button class="chip active" data-filter="all">All</button><button class="chip" data-filter="steel">Steel</button><button class="chip" data-filter="machines">Machines</button><button class="chip" data-filter="fabrication">Fabrication</button><button class="chip" data-filter="construction">Construction</button><button class="chip" data-filter="services">Services</button>
+  <button class="chip active" data-filter="all">All</button><button class="chip" data-filter="ppgl">PPGL Roofing Sheets</button><button class="chip" data-filter="coil">Steel Coils</button><button class="chip" data-filter="fabrication">Structural Fabrication</button>
 </section>
-<section class="feed-head"><div><h2>Explore products</h2><p>Watch short videos from sellers.</p></div><button class="filter" id="sortBtn">Latest ▾</button></section>
+<section class="feed-head"><div><p class="eyebrow">DISCOVER THROUGH VIDEO</p><h2>Trending products & capabilities</h2><p>Watch the product. Understand the seller. Start the conversation.</p></div><button class="filter" id="sortBtn">Latest ▾</button></section>
 <section class="feed" id="feed">
-  <article class="card" data-category="steel">
-    <div class="video-wrap"><video controls playsinline preload="metadata" poster="https://files2.heygen.ai/aws_pacific/avatar_tmp/1cbf34736a6c4e84a0ff4c7de37652e4/db6055f1f13052eb4619bd616c5df293.jpeg"><source src="https://files2.heygen.ai/aws_pacific/avatar_tmp/1cbf34736a6c4e84a0ff4c7de37652e4/db6055f1f13052eb4619bd616c5df293.mp4" type="video/mp4"></video><span class="badge">VIDEO</span></div>
-    <div class="card-body"><div class="seller"><span class="avatar">BM</span><span>BookMyMetal Demo Seller <small>Verified</small></span></div><h3>Industrial product showcase</h3><p>See the product, process and capability before you enquire.</p><div class="facts"><span>Steel</span><span>Industrial</span></div><div class="actions"><button class="primary">Enquire</button><button class="secondary compare">＋ Compare</button></div></div>
+  <article class="card" data-category="ppgl">
+    <div class="video-wrap"><video controls playsinline preload="metadata" poster="https://files2.heygen.ai/aws_pacific/avatar_tmp/1cbf34736a6c4e84a0ff4c7de37652e4/db6055f1f13052eb4619bd616c5df293.jpeg"><source src="https://files2.heygen.ai/aws_pacific/avatar_tmp/1cbf34736a6c4e84a0ff4c7de37652e4/db6055f1f13052eb4619bd616c5df293.mp4" type="video/mp4"></video><span class="badge">PRODUCT VIDEO</span></div>
+    <div class="card-body"><div class="seller"><span class="avatar">PC</span><span>Pristine Coils Pvt. Ltd. <small>✓ Verified seller</small></span></div><h3>PPGL Roofing Sheets</h3><p>See colour, finish, profile and application before you request a quote.</p><div class="facts"><span>0.30–1.20 mm</span><span>600–1250 mm</span></div><div class="actions"><button class="primary">Request Quote</button><button class="secondary compare">＋ Compare</button></div></div>
   </article>
-  <article class="card" data-category="machines">
-    <div class="video-wrap"><video controls playsinline preload="metadata"><source src="https://files2.heygen.ai/aws_pacific/avatar_tmp/1cbf34736a6c4e84a0ff4c7de37652e4/v73ad9ac889f54d068dce9644bd641c53/b247431ef9f546ae8c10159c32287108.mp4" type="video/mp4"></video><span class="badge">DEMO</span></div>
-    <div class="card-body"><div class="seller"><span class="avatar">AI</span><span>BookMyMetal AI Demo <small>Platform</small></span></div><h3>See how AI understands video</h3><p>Product information can become searchable and comparable.</p><div class="facts"><span>AI</span><span>Video</span></div><div class="actions"><button class="primary">Watch</button><button class="secondary compare">＋ Compare</button></div></div>
+  <article class="card" data-category="coil">
+    <div class="video-wrap"><video controls playsinline preload="metadata"><source src="https://files2.heygen.ai/aws_pacific/avatar_tmp/1cbf34736a6c4e84a0ff4c7de37652e4/v73ad9ac889f54d068dce9644bd641c53/b247431ef9f546ae8c10159c32287108.mp4" type="video/mp4"></video><span class="badge">PRODUCT VIDEO</span></div>
+    <div class="card-body"><div class="seller"><span class="avatar">SS</span><span>Shree Steel Industries <small>✓ Verified seller</small></span></div><h3>Steel Coils</h3><p>Watch the material, handling and available range before you enquire.</p><div class="facts"><span>0.18–3.00 mm</span><span>600–1500 mm</span></div><div class="actions"><button class="primary">Request Quote</button><button class="secondary compare">＋ Compare</button></div></div>
   </article>
   <article class="card" data-category="fabrication">
-    <div class="video-wrap demo-placeholder"><div><strong>Seller video</strong><small>Real product videos will appear here</small></div><span class="badge">COMING NEXT</span></div>
-    <div class="card-body"><div class="seller"><span class="avatar">S</span><span>Verified Seller <small>Early seller</small></span></div><h3>Fabrication & custom work</h3><p>Sellers will show their machines, process, products and finished work.</p><div class="facts"><span>Fabrication</span><span>Custom</span></div><div class="actions"><button class="primary">Enquire</button><button class="secondary compare">＋ Compare</button></div></div>
+    <div class="video-wrap demo-placeholder"><div><strong>Structural fabrication</strong><small>Machines • process • finished work</small></div><span class="badge">SELLER VIDEO</span></div>
+    <div class="card-body"><div class="seller"><span class="avatar">BF</span><span>BuildWell Fabricators <small>✓ Verified seller</small></span></div><h3>Structural Fabrication</h3><p>Explore fabrication capability, project work and custom requirements through video.</p><div class="facts"><span>Custom work</span><span>Project capability</span></div><div class="actions"><button class="primary">Request Quote</button><button class="secondary compare">＋ Compare</button></div></div>
   </article>
 </section>
-<section class="next" id="upload-coming"><div><p class="eyebrow">COMING NEXT</p><h2>Upload a product video.</h2><p>Seller registration, video upload, product details and approval will connect directly to our PHP + MySQL backend.</p></div><button class="outline" onclick="alert('Seller video upload is the next build step.')">Seller upload →</button></section>
+<section class="value"><div><span>01</span><strong>See it</strong><small>Real seller video</small></div><div><span>02</span><strong>Understand it</strong><small>Specs + capability</small></div><div><span>03</span><strong>Compare</strong><small>Shortlist suppliers</small></div><div><span>04</span><strong>Source it</strong><small>Request a quote</small></div></section>
+<section class="sell-section" id="sell"><div><p class="eyebrow">FOR SUPPLIERS & MANUFACTURERS</p><h2>Show what you make.<br>Let buyers see it.</h2><p>Upload short product and capability videos, add your specifications and start receiving relevant B2B enquiries.</p></div><button class="hero-primary" onclick="alert('Seller onboarding is the next backend build step.')">Start selling →</button></section>
+<section class="next" id="account"><div><p class="eyebrow">BUILDING THE MARKETPLACE</p><h2>From discovery to transaction.</h2><p>Buyer accounts, seller onboarding, video upload, enquiries, chat, quotes and order tracking will connect to the PHP + MySQL backend.</p></div></section>
 </main>
-<nav class="mobile-nav"><a class="active" href="/home/">⌂<span>Home</span></a><a href="#categories">◉<span>Categories</span></a><a href="#sell">＋<span>Sell</span></a><a href="#account">◯<span>Account</span></a></nav>
+<nav class="mobile-nav"><a class="active" href="/home/">⌂<span>Discover</span></a><a href="#categories">◉<span>Categories</span></a><a href="#sell">＋<span>Sell</span></a><a href="#account">◯<span>Account</span></a></nav>
 <script src="app.js"></script>
 </body>
 </html>
