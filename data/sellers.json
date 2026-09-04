@@ -1,0 +1,42 @@
+[
+  {
+    "id": "rsg-profile-manufacturing",
+    "company": "RSG Profile Manufacturing Private Limited",
+    "location": "Kanpur, Uttar Pradesh, India",
+    "category": "PPGL Roofing Sheets",
+    "business_type": "Manufacturer & Wholesaler",
+    "founded": "2019",
+    "gst": "09AAJCR9402M1ZT",
+    "cin": "U28931UP2019PTC123973",
+    "products": ["Colour Coated Roofing Sheets", "PPGL", "PPGI", "MS Plate / Channel / Angle", "MS Pipe", "Decking Sheet", "C & Z Purlins", "Polycarbonate Sheet", "Crimping Sheet"],
+    "specs": "0.30–0.80 mm; 900–1250 mm; custom cut-to-length",
+    "video_status": "Public product videos found online — permission required before hosting/copying media",
+    "video_source": "https://www.rsgprofilesheets.in/",
+    "website": "https://rsgprofilesheets.com/",
+    "phone": "+91-9918522988",
+    "email": "shivamgupta@rsgprofilesheets.com",
+    "address": "53-A, Industrial Estate, Dada Nagar, Kanpur, Uttar Pradesh 208022, India",
+    "onboarding_status": "research-imported",
+    "verified": false
+  },
+  {
+    "id": "chawla-ispat",
+    "company": "Chawla Ispat Private Limited",
+    "location": "Rudrapur, Uttarakhand, India",
+    "category": "Roofing Sheets & Steel",
+    "business_type": "Manufacturer & Trader",
+    "founded": "2007",
+    "gst": "05AADCC0727A1ZH",
+    "cin": "U27107UR2007PTC032379",
+    "products": ["PPGL Colour Coated Roofing Sheet", "PPGI Roofing Sheet", "JSW Colour Coated Roofing Sheets", "Color Coated Coils", "GI Sheets", "TMT Bars", "MS Channels", "MS Angles", "Air Ventilators"],
+    "specs": "Product-specific specifications to be confirmed with seller",
+    "video_status": "Public product videos found online — permission required before hosting/copying media",
+    "video_source": "https://www.chawlaispat.co.in/corporate-video.html",
+    "website": "https://www.chawlaispat.co.in/",
+    "phone": "+91-7942716574",
+    "email": null,
+    "address": "41, Galla Mandi, Rudrapur, Udham Singh Nagar, Uttarakhand 263153, India",
+    "onboarding_status": "research-imported",
+    "verified": false
+  }
+]
