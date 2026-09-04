@@ -1,0 +1,1 @@
+This legacy path has been replaced by /marketplace/. The approved production entry point is /marketplace/.
