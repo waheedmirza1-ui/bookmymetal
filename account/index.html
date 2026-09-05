@@ -1,1 +1,62 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Account — BookMyMetal</title><link rel="stylesheet" href="../assets/bmm.css"></head><body><header class="top"><a class="logo" href="../marketplace/">BOOK<span>MY</span>METAL</a><nav><a href="../marketplace/">Marketplace</a><a href="../categories/">Categories</a><a href="../suppliers/">Suppliers</a><a href="../rfq/">My RFQs</a></nav><a class="btn blue" href="../account/">Account</a></header><main class="detail"><div class="panel"><div class="sectionhead"><label>BOOKMYMETAL ACCOUNT</label><h1>Your sourcing workspace</h1><p>One place for saved videos, comparisons, enquiries, quotes and orders.</p></div><div class="categorygrid"><a href="../search/">Saved videos</a><a href="../compare/">Compare</a><a href="../rfq/">My RFQs</a><a>Quotes</a><a>Orders</a><a>Messages</a><a>Notifications</a><a>Company profile</a></div></div><section class="cta"><div><label>SELL ON BOOKMYMETAL</label><h2>Put your business on video</h2><p>Create a supplier profile, publish product/service videos and receive buyer enquiries.</p></div><a class="btn blue" href="../seller/">Start seller onboarding →</a></section></main></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Create your BookMyMetal buyer or seller account.">
+  <title>Create your account — BookMyMetal</title>
+  <link rel="stylesheet" href="../assets/account.css">
+</head>
+<body>
+  <header class="account-header">
+    <a class="brand" href="../marketplace/" aria-label="BookMyMetal marketplace">BOOK<span>MY</span>METAL</a>
+    <a class="back-link" href="../marketplace/">← Back to marketplace</a>
+  </header>
+  <main class="account-layout">
+    <section class="account-intro" aria-labelledby="account-title">
+      <p class="eyebrow">BOOKMYMETAL ACCOUNT</p>
+      <h1 id="account-title">Source with confidence.<br><em>Sell with proof.</em></h1>
+      <p class="intro-copy">Create one secure account to discover products, compare suppliers, request quotes and manage your sourcing journey.</p>
+      <ol class="journey" aria-label="BookMyMetal journey">
+        <li><span>01</span> Discover products and suppliers</li>
+        <li><span>02</span> Watch, understand and compare</li>
+        <li><span>03</span> Request quotes and manage orders</li>
+      </ol>
+      <div class="seller-note"><strong>Are you a supplier?</strong><span>Create a seller account to add your business and submit product videos for review.</span></div>
+    </section>
+    <section class="account-card" aria-label="Account form">
+      <div class="tabs" role="tablist" aria-label="Account access">
+        <button id="register-tab" class="active" type="button" role="tab" aria-selected="true" aria-controls="register-panel">Create account</button>
+        <button id="login-tab" type="button" role="tab" aria-selected="false" aria-controls="login-panel">Sign in</button>
+      </div>
+      <div id="register-panel" role="tabpanel" aria-labelledby="register-tab">
+        <div class="card-heading"><h2>Join BookMyMetal</h2><p>Choose the workspace that fits how you use the marketplace.</p></div>
+        <div class="role-picker" role="group" aria-label="Account type">
+          <button class="role active" type="button" data-role="buyer" aria-pressed="true"><strong>Buyer</strong><span>Source, compare and request quotes</span></button>
+          <button class="role" type="button" data-role="seller" aria-pressed="false"><strong>Seller</strong><span>Show products and receive enquiries</span></button>
+        </div>
+        <form id="register-form" novalidate>
+          <input type="hidden" name="role" value="buyer">
+          <label>Full name<input name="name" autocomplete="name" required minlength="2" placeholder="Your full name"></label>
+          <label>Company <span class="optional">Optional</span><input name="company" autocomplete="organization" placeholder="Company name"></label>
+          <label>Work email<input name="email" type="email" autocomplete="email" required placeholder="you@company.com"></label>
+          <label>Password<input name="password" type="password" autocomplete="new-password" required minlength="10" placeholder="At least 10 characters"><small>Use at least 10 characters.</small></label>
+          <label>Confirm password<input name="confirmPassword" type="password" autocomplete="new-password" required minlength="10" placeholder="Re-enter your password"></label>
+          <button class="primary" type="submit">Create buyer account <span>→</span></button>
+        </form>
+        <p class="terms">By creating an account, you agree to use BookMyMetal for legitimate business sourcing. Account verification and password recovery will be added before public launch.</p>
+      </div>
+      <div id="login-panel" role="tabpanel" aria-labelledby="login-tab" hidden>
+        <div class="card-heading"><h2>Welcome back</h2><p>Sign in to continue your sourcing or seller work.</p></div>
+        <form id="login-form" novalidate>
+          <label>Work email<input name="email" type="email" autocomplete="email" required placeholder="you@company.com"></label>
+          <label>Password<input name="password" type="password" autocomplete="current-password" required placeholder="Your password"></label>
+          <button class="primary" type="submit">Sign in <span>→</span></button>
+        </form>
+      </div>
+      <p id="form-status" class="form-status" role="status" aria-live="polite" hidden></p>
+    </section>
+  </main>
+  <script src="../assets/account.js" defer></script>
+</body>
+</html>
