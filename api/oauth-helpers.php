@@ -8,9 +8,15 @@ function oauth_session_start(): void {
 
 function oauth_config(): array {
     $configFile = dirname(__DIR__) . '/config.php';
-    if (!is_file($configFile)) return [];
-    $config = require $configFile;
-    return is_array($config['oauth'] ?? null) ? $config['oauth'] : [];
+    $config = is_file($configFile) ? require $configFile : [];
+    $oauth = is_array($config['oauth'] ?? null) ? $config['oauth'] : [];
+    $google = [
+        'client_id' => trim((string)(getenv('BMM_GOOGLE_OAUTH_CLIENT_ID') ?: ($oauth['google']['client_id'] ?? ''))),
+        'client_secret' => trim((string)(getenv('BMM_GOOGLE_OAUTH_CLIENT_SECRET') ?: ($oauth['google']['client_secret'] ?? ''))),
+        'redirect_uri' => trim((string)(getenv('BMM_GOOGLE_OAUTH_REDIRECT_URI') ?: ($oauth['google']['redirect_uri'] ?? ''))),
+    ];
+    if ($google['client_id'] !== '' || $google['client_secret'] !== '' || $google['redirect_uri'] !== '') $oauth['google'] = $google;
+    return $oauth;
 }
 
 function oauth_provider_config(string $provider): ?array {
