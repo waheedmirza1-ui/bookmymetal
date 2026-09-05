@@ -32,8 +32,19 @@
       <ul><li>Real product or service footage</li><li>Clear specification and availability</li><li>Company name and location</li><li>Responsive quote handling</li></ul>
     </section>
     <section id="seller-workspace" class="workspace" hidden>
-      <p class="eyebrow">SELLER WORKSPACE</p><h2>Finish your launch checklist.</h2>
-      <div class="checklist"><a href="../account/"><b>1</b><span><strong>Review account details</strong><small>Confirm your company profile.</small></span><i>→</i></a><a href="../seller/"><b>2</b><span><strong>Prepare your first product video</strong><small>MP4, WebM or MOV; genuine product footage only.</small></span><i>→</i></a><a href="../marketplace/"><b>3</b><span><strong>See how buyers discover listings</strong><small>Published video listings appear after review.</small></span><i>→</i></a></div>
+      <p class="eyebrow">SELLER WORKSPACE</p><h2>Submit a product video for review.</h2>
+      <p class="workspace-intro">Listings are private until BookMyMetal moderation approves them. Upload genuine product or capability footage only.</p>
+      <form id="product-form" class="product-form" enctype="multipart/form-data" novalidate>
+        <div class="field"><label for="product-title">Product or service name</label><input id="product-title" name="title" maxlength="255" required placeholder="e.g. Pre-painted roofing sheets"></div>
+        <div class="field"><label for="product-category">Category</label><input id="product-category" name="category" maxlength="120" required placeholder="e.g. Construction materials"></div>
+        <div class="field full"><label for="product-description">Key specification</label><textarea id="product-description" name="description" maxlength="2000" placeholder="Material, grade, size, finish, capacity or available range"></textarea></div>
+        <div class="field full"><label for="product-video">Product video</label><input id="product-video" name="video" type="file" accept="video/mp4,video/webm,video/quicktime" required aria-describedby="video-help"><small id="video-help">MP4, WebM or MOV · maximum 100 MB · uploads go to moderation.</small></div>
+        <div class="form-actions"><button class="primary" type="submit">Submit for review <span>→</span></button><p id="product-status" class="form-status" role="status"></p></div>
+      </form>
+      <div class="workspace-head"><div><p class="eyebrow">YOUR LISTINGS</p><h2>Your submitted listings.</h2></div><a class="secondary" href="../marketplace/">View marketplace</a></div>
+      <div id="seller-products" class="listing-grid" aria-live="polite"><p class="empty-listing">Loading your listings…</p></div>
+      <div class="workspace-head enquiries-head"><div><p class="eyebrow">BUYER ENQUIRIES</p><h2>Requests for quote.</h2></div></div>
+      <div id="seller-enquiries" class="enquiry-list" aria-live="polite"><p class="empty-listing">Loading buyer enquiries…</p></div>
     </section>
   </main>
   <script src="../assets/seller.js" defer></script>
