@@ -126,9 +126,24 @@
 
   function show(message, error = false) { status.textContent = message; status.hidden = false; status.classList.toggle('error', error); }
   function hideSubflows() { [otpVerifyPanel, otpProfilePanel, resetPanel].forEach((panel) => { panel.hidden = true; }); }
-  function chooseOtpRole(role) { const button = document.querySelector(`.otp-role[data-role="${role}"]`); if (button) button.click(); }
+  function chooseOtpRole(role) { const button = document.querySelector(`.otp-role[data-role="${role}"]`); if (button) applyOtpRole(button); }
+  function applyOtpRole(button) { const role = button.dataset.role; document.querySelectorAll('.otp-role').forEach((item) => item.classList.toggle('active', item === button)); otpProfileForm.querySelector('[name="role"]').value = role; otpProfileForm.querySelector('.primary').innerHTML = `Continue as ${role} <span>→</span>`; }
   function setSocialRoleMode(enabled) { otpProfilePanel.dataset.oauthRole = enabled ? 'true' : ''; otpProfilePanel.querySelectorAll('[data-profile-field]').forEach((field) => { field.hidden = enabled; }); }
   function requestOptions() { return { method: 'POST', credentials: 'include', headers: { 'Content-Type': 'application/json' } }; }
+  async function completeOAuthRole(role) {
+    const submit = otpProfileForm.querySelector('button[type="submit"]');
+    submit.disabled = true;
+    show(`Setting up your ${role} account…`);
+    try {
+      const response = await fetch('../api/oauth-role.php', { ...requestOptions(), body: JSON.stringify({ role }) });
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok || !result.ok) throw new Error(result.error || 'Unable to finish your social account.');
+      window.location.assign(role === 'seller' ? '../seller/' : '../marketplace/');
+    } catch (error) {
+      show(error.message || 'Unable to finish your social account.', true);
+      submit.disabled = false;
+    }
+  }
   async function otpRequest(payload) {
     const response = await fetch('../api/otp.php', { ...requestOptions(), body: JSON.stringify(payload) });
     const data = await response.json().catch(() => ({}));
@@ -155,8 +170,8 @@
   otpRequestForms.forEach((form) => form.addEventListener('submit', async (event) => { event.preventDefault(); const button = form.querySelector('button'); button.disabled = true; try { await sendOtp(String(new FormData(form).get('destination') || ''), 'login'); } catch (error) { show(error.message, true); } finally { button.disabled = false; } }));
   resend?.addEventListener('click', async () => { try { await sendOtp(destination, purpose); } catch (error) { show(error.message, true); } });
   otpVerifyForm?.addEventListener('submit', async (event) => { event.preventDefault(); try { const data = await otpRequest({ action: 'verify', destination, purpose, code: String(new FormData(otpVerifyForm).get('code') || '') }); if (data.next === 'profile') { hideSubflows(); setSocialRoleMode(false); otpProfilePanel.hidden = false; chooseOtpRole(requestedRole); show('Code verified. Complete your BookMyMetal profile.'); return; } if (data.next === 'reset_password') { hideSubflows(); resetPanel.hidden = false; show('Code verified. Choose a new password.'); return; } if (data.next === 'role') { hideSubflows(); setSocialRoleMode(true); otpProfilePanel.hidden = false; chooseOtpRole(requestedRole); show('Code verified. Choose how you will use BookMyMetal.'); return; } const user = data.user || {}; window.location.assign(user.role === 'seller' ? '../seller/' : '../marketplace/'); } catch (error) { show(error.message, true); } });
-  document.querySelectorAll('.otp-role').forEach((button) => button.addEventListener('click', () => { document.querySelectorAll('.otp-role').forEach((item) => item.classList.toggle('active', item === button)); otpProfileForm.querySelector('[name="role"]').value = button.dataset.role; otpProfileForm.querySelector('.primary').innerHTML = `Continue as ${button.dataset.role} <span>→</span>`; }));
-  otpProfileForm?.addEventListener('submit', async (event) => { event.preventDefault(); const data = new FormData(otpProfileForm); const role = String(data.get('role') || 'buyer'); try { let result; if (otpProfilePanel.dataset.oauthRole === 'true') result = await fetch('../api/oauth-role.php', { ...requestOptions(), body: JSON.stringify({ role }) }).then((response) => response.json()); else result = await otpRequest({ action: 'complete_profile', name: String(data.get('name') || ''), company: String(data.get('company') || ''), role }); if (!result.ok) throw new Error(result.error || 'Unable to create your account.'); window.location.assign(role === 'seller' ? '../seller/' : '../marketplace/'); } catch (error) { show(error.message, true); } });
+  document.querySelectorAll('.otp-role').forEach((button) => button.addEventListener('click', () => { const role = button.dataset.role; applyOtpRole(button); if (otpProfilePanel.dataset.oauthRole === 'true') completeOAuthRole(role); }));
+  otpProfileForm?.addEventListener('submit', async (event) => { event.preventDefault(); const data = new FormData(otpProfileForm); const role = String(data.get('role') || 'buyer'); if (otpProfilePanel.dataset.oauthRole === 'true') { completeOAuthRole(role); return; } try { const result = await otpRequest({ action: 'complete_profile', name: String(data.get('name') || ''), company: String(data.get('company') || ''), role }); if (!result.ok) throw new Error(result.error || 'Unable to create your account.'); window.location.assign(role === 'seller' ? '../seller/' : '../marketplace/'); } catch (error) { show(error.message, true); } });
   forgot?.addEventListener('click', () => { resetRequestForm.hidden = !resetRequestForm.hidden; if (!resetRequestForm.hidden) resetRequestForm.querySelector('input').focus(); });
   resetRequestForm?.addEventListener('submit', async (event) => { event.preventDefault(); try { await sendOtp(String(new FormData(resetRequestForm).get('destination') || ''), 'password_reset'); } catch (error) { show(error.message, true); } });
   resetForm?.addEventListener('submit', async (event) => { event.preventDefault(); const data = new FormData(resetForm); const password = String(data.get('password') || ''); if (password.length < 8 || password !== String(data.get('confirmPassword') || '')) return show('Use matching passwords with at least 8 characters.', true); try { await otpRequest({ action: 'reset_password', password }); show('Password updated. You can now sign in.'); } catch (error) { show(error.message, true); } });
