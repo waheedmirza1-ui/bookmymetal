@@ -6,6 +6,7 @@
   <meta name="description" content="Create your BookMyMetal buyer or seller account.">
   <title>Create your account — BookMyMetal</title>
   <link rel="stylesheet" href="../assets/account.css">
+  <link rel="stylesheet" href="../assets/auth-additions.css">
 </head>
 <body>
   <header class="account-header">
@@ -25,12 +26,15 @@
       <div class="seller-note"><strong>Are you a supplier?</strong><span>Create a seller account to add your business and submit product videos for review.</span></div>
     </section>
     <section class="account-card" aria-label="Account form">
+      <section id="primary-auth-panel" class="primary-auth"><div class="card-heading"><h2>Sign in or create your BookMyMetal account</h2><p>Use your email address or mobile number. We will send a secure 6-digit verification code.</p></div><div class="social-stack" aria-label="Google sign in"><a class="oauth-button" data-provider="google" href="../api/oauth.php?provider=google&amp;return=/account/"><span class="oauth-mark google">G</span>Continue with Google <b class="oauth-badge">Checking…</b></a></div><div class="divider"><span>or continue with a one-time code</span></div><form id="primary-otp-request-form" class="otp-request-form otp-form" novalidate><label>Email address or mobile number<input name="destination" autocomplete="username" inputmode="email" placeholder="name@company.com or +91 98765 43210"></label><button class="primary" type="submit">Continue <span>→</span></button></form><p class="otp-help">Use an international mobile number with country code, for example +91, +1 or +971.</p><button id="use-password" class="text-button" type="button">Use password instead</button></section>
       <div class="tabs" role="tablist" aria-label="Account access">
         <button id="register-tab" class="active" type="button" role="tab" aria-selected="true" aria-controls="register-panel">Create account</button>
         <button id="login-tab" type="button" role="tab" aria-selected="false" aria-controls="login-panel">Sign in</button>
       </div>
       <div id="register-panel" role="tabpanel" aria-labelledby="register-tab">
         <div class="card-heading"><h2>Join BookMyMetal</h2><p>Choose the workspace that fits how you use the marketplace.</p></div>
+        <div class="social-stack" aria-label="Social sign up"><a class="oauth-button" data-provider="google" href="../api/oauth.php?provider=google&amp;return=/account/"><span class="oauth-mark google">G</span>Continue with Google <b class="oauth-badge">Checking…</b></a><a class="oauth-button" data-provider="facebook" href="../api/oauth.php?provider=facebook&amp;return=/account/"><span class="oauth-mark facebook">f</span>Continue with Facebook <b class="oauth-badge">Checking…</b></a></div>
+        <div class="divider"><span>or continue with email</span></div>
         <div class="role-picker" role="group" aria-label="Account type">
           <button class="role active" type="button" data-role="buyer" aria-pressed="true"><strong>Buyer</strong><span>Source, compare and request quotes</span></button>
           <button class="role" type="button" data-role="seller" aria-pressed="false"><strong>Seller</strong><span>Show products and receive enquiries</span></button>
@@ -40,20 +44,31 @@
           <label>Full name<input name="name" autocomplete="name" required minlength="2" placeholder="Your full name"></label>
           <label>Company <span class="optional">Optional</span><input name="company" autocomplete="organization" placeholder="Company name"></label>
           <label>Work email<input name="email" type="email" autocomplete="email" required placeholder="you@company.com"></label>
-          <label>Password<input name="password" type="password" autocomplete="new-password" required minlength="10" placeholder="At least 10 characters"><small>Use at least 10 characters.</small></label>
-          <label>Confirm password<input name="confirmPassword" type="password" autocomplete="new-password" required minlength="10" placeholder="Re-enter your password"></label>
+          <label>Password<input name="password" type="password" autocomplete="new-password" required minlength="8" placeholder="At least 8 characters"><small>Use 10 or more characters when possible.</small></label>
+          <label>Confirm password<input name="confirmPassword" type="password" autocomplete="new-password" required minlength="8" placeholder="Re-enter your password"></label>
           <button class="primary" type="submit">Create buyer account <span>→</span></button>
         </form>
         <p class="terms">By creating an account, you agree to use BookMyMetal for legitimate business sourcing. Account verification and password recovery will be added before public launch.</p>
       </div>
       <div id="login-panel" role="tabpanel" aria-labelledby="login-tab" hidden>
         <div class="card-heading"><h2>Welcome back</h2><p>Sign in to continue your sourcing or seller work.</p></div>
+        <div class="social-stack" aria-label="Social sign in"><a class="oauth-button" data-provider="google" href="../api/oauth.php?provider=google&amp;return=/account/"><span class="oauth-mark google">G</span>Continue with Google <b class="oauth-badge">Checking…</b></a><a class="oauth-button" data-provider="facebook" href="../api/oauth.php?provider=facebook&amp;return=/account/"><span class="oauth-mark facebook">f</span>Continue with Facebook <b class="oauth-badge">Checking…</b></a></div>
+        <div class="divider"><span>or sign in with a one-time code</span></div>
+        <form id="otp-request-form" class="otp-request-form otp-form" novalidate><label>Email or mobile number<input name="destination" autocomplete="username" inputmode="email" placeholder="name@company.com or +91 98765 43210"></label><button class="secondary-primary" type="submit">Send 6-digit OTP</button></form>
+        <p class="otp-help">India: enter a 10-digit mobile number or use <b>+91</b>. Other countries: use the full country code.</p>
+        <div class="divider"><span>or continue with password</span></div>
         <form id="login-form" novalidate>
           <label>Work email<input name="email" type="email" autocomplete="email" required placeholder="you@company.com"></label>
           <label>Password<input name="password" type="password" autocomplete="current-password" required placeholder="Your password"></label>
           <button class="primary" type="submit">Sign in <span>→</span></button>
         </form>
+        <button id="forgot-password" class="text-button" type="button">Forgot password?</button>
+        <form id="reset-request-form" class="otp-form" novalidate hidden><label>Account email<input name="destination" type="email" autocomplete="email" placeholder="you@company.com"></label><button class="secondary-primary" type="submit">Send password reset code</button></form>
+        <button id="create-password-account" class="text-button" type="button">Create an account with email and password</button>
       </div>
+      <section id="otp-verify-panel" class="auth-subflow" hidden><div class="card-heading"><h2>Enter your code</h2><p id="otp-destination-label">We sent a 6-digit code.</p></div><form id="otp-verify-form" novalidate><label>6-digit OTP<input name="code" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6}" maxlength="6" placeholder="000000"></label><button class="primary" type="submit">Verify code <span>→</span></button></form><button id="otp-resend" class="text-button" type="button" disabled>Resend code</button></section>
+      <section id="otp-profile-panel" class="auth-subflow" hidden><div class="card-heading"><h2>Finish your account</h2><p>Tell us how you will use BookMyMetal.</p></div><form id="otp-profile-form" novalidate><label data-profile-field>Full name<input name="name" autocomplete="name" required minlength="2" placeholder="Your full name"></label><label data-profile-field>Company <span class="optional">Optional</span><input name="company" autocomplete="organization" placeholder="Company name"></label><div class="role-picker" role="group" aria-label="Account type"><button class="otp-role active" type="button" data-role="buyer"><strong>Buyer</strong><span>Source and compare</span></button><button class="otp-role" type="button" data-role="seller"><strong>Seller</strong><span>Publish and receive enquiries</span></button></div><input type="hidden" name="role" value="buyer"><button class="primary" type="submit">Continue as buyer <span>→</span></button></form></section>
+      <section id="reset-password-panel" class="auth-subflow" hidden><div class="card-heading"><h2>Set a new password</h2><p>Use at least 8 characters; 10 or more is recommended.</p></div><form id="reset-password-form" novalidate><label>New password<input name="password" type="password" autocomplete="new-password" required minlength="8"></label><label>Confirm password<input name="confirmPassword" type="password" autocomplete="new-password" required minlength="8"></label><button class="primary" type="submit">Save new password</button></form></section>
       <p id="form-status" class="form-status" role="status" aria-live="polite" hidden></p>
     </section>
   </main>
