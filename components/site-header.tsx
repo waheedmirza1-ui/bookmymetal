@@ -43,13 +43,13 @@ export function SiteHeader() {
         </div>
 
         <div className="ml-auto flex items-center gap-2 md:ml-0">
-          <button className="hidden items-center gap-1.5 rounded-full border border-border px-3.5 py-2 text-sm font-medium text-foreground transition-colors hover:bg-muted sm:inline-flex">
+          <a href="https://www.bookmymetal.com/seller/" className="hidden items-center gap-1.5 rounded-full border border-border px-3.5 py-2 text-sm font-medium text-foreground transition-colors hover:bg-muted sm:inline-flex">
             <PlusCircle className="h-4 w-4" />
             Post a reel
-          </button>
-          <button className="hidden rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90 sm:inline-block">
+          </a>
+          <a href="https://www.bookmymetal.com/account/" className="hidden rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90 sm:inline-block">
             Sign in
-          </button>
+          </a>
           <button
             type="button"
             className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-border lg:hidden"
@@ -76,12 +76,12 @@ export function SiteHeader() {
               </a>
             ))}
             <div className="mt-2 flex gap-2">
-              <button className="flex-1 rounded-full border border-border px-4 py-2 text-sm font-medium">
+              <a href="https://www.bookmymetal.com/seller/" className="flex-1 rounded-full border border-border px-4 py-2 text-center text-sm font-medium">
                 Post a reel
-              </button>
-              <button className="flex-1 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground">
+              </a>
+              <a href="https://www.bookmymetal.com/account/" className="flex-1 rounded-full bg-primary px-4 py-2 text-center text-sm font-semibold text-primary-foreground">
                 Sign in
-              </button>
+              </a>
             </div>
           </nav>
         </div>

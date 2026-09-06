@@ -13,11 +13,16 @@ const suggestions = [
 
 export function AiSearch({ compact = false }: { compact?: boolean }) {
   const [value, setValue] = useState('')
+  const submitSearch = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    const query = value.trim()
+    if (query) window.location.assign(`https://www.bookmymetal.com/search/?q=${encodeURIComponent(query)}`)
+  }
 
   if (compact) {
     return (
       <form
-        onSubmit={(e) => e.preventDefault()}
+        onSubmit={submitSearch}
         className="relative flex items-center"
       >
         <Search className="pointer-events-none absolute left-3 h-4 w-4 text-muted-foreground" />
@@ -34,7 +39,7 @@ export function AiSearch({ compact = false }: { compact?: boolean }) {
   return (
     <div className="mx-auto w-full max-w-2xl">
       <form
-        onSubmit={(e) => e.preventDefault()}
+        onSubmit={submitSearch}
         className="relative flex items-center rounded-2xl border border-border bg-background p-2 shadow-sm ring-1 ring-transparent focus-within:ring-ring"
       >
         <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-accent text-primary">
