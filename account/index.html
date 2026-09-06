@@ -54,10 +54,6 @@
 
       <div id="register-panel" role="tabpanel" aria-labelledby="register-tab">
         <div class="card-heading"><h2>Create an account</h2><p>Use email and password instead.</p></div>
-        <div class="role-picker" role="group" aria-label="Account type">
-          <button class="role active" type="button" data-role="buyer" aria-pressed="true"><strong>Buyer</strong><span>Source, compare and request quotes</span></button>
-          <button class="role" type="button" data-role="seller" aria-pressed="false"><strong>Seller</strong><span>Show products and receive enquiries</span></button>
-        </div>
         <form id="register-form" novalidate>
           <input type="hidden" name="role" value="buyer">
           <label>Full name<input name="name" autocomplete="name" required minlength="2" placeholder="Your full name"></label>
@@ -65,7 +61,7 @@
           <label>Work email<input name="email" type="email" autocomplete="email" required placeholder="you@company.com"></label>
           <label>Password<input name="password" type="password" autocomplete="new-password" required minlength="8" placeholder="At least 8 characters"><small>Use 10 or more characters when possible.</small></label>
           <label>Confirm password<input name="confirmPassword" type="password" autocomplete="new-password" required minlength="8" placeholder="Re-enter your password"></label>
-          <button class="primary" type="submit">Create buyer account <span>→</span></button>
+          <button class="primary" type="submit">Create account <span>→</span></button>
         </form>
       </div>
 
@@ -88,13 +84,12 @@
       </section>
 
       <section id="otp-profile-panel" class="auth-subflow" hidden>
-        <div class="card-heading"><h2>Finish your account</h2><p>Tell us how you will use BookMyMetal.</p></div>
+        <div class="card-heading"><h2>Finish your account</h2><p>Tell us a little about yourself.</p></div>
         <form id="otp-profile-form" novalidate>
           <label data-profile-field>Full name<input name="name" autocomplete="name" required minlength="2" placeholder="Your full name"></label>
           <label data-profile-field>Company <span class="optional">Optional</span><input name="company" autocomplete="organization" placeholder="Company name"></label>
-          <div class="role-picker" role="group" aria-label="Account type"><button class="otp-role active" type="button" data-role="buyer"><strong>Buyer</strong><span>Source and compare</span></button><button class="otp-role" type="button" data-role="seller"><strong>Seller</strong><span>Publish and receive enquiries</span></button></div>
           <input type="hidden" name="role" value="buyer">
-          <button class="primary" type="submit">Continue as buyer <span>→</span></button>
+          <button class="primary" type="submit">Continue <span>→</span></button>
         </form>
       </section>
 
@@ -109,7 +104,7 @@
     <p class="signin-line">Already have an account? <button id="signin-shortcut" type="button">Sign in</button></p>
   </main>
 
-  <script src="../assets/account.js?v=oauth-role-2" defer></script>
+  <script src="../assets/account.js?v=one-account-1" defer></script>
   <script>
     document.addEventListener('DOMContentLoaded', function(){
       var shortcut=document.getElementById('signin-shortcut');

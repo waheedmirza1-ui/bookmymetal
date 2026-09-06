@@ -9,7 +9,13 @@ function ensure_user_auth_schema(PDO $pdo): void {
     if (!in_array('phone_verified', $columns, true)) $pdo->exec('ALTER TABLE users ADD COLUMN phone_verified TINYINT(1) NOT NULL DEFAULT 0 AFTER email_verified');
     if (!in_array('oauth_provider', $columns, true)) $pdo->exec('ALTER TABLE users ADD COLUMN oauth_provider VARCHAR(24) NULL AFTER role_confirmed');
     if (!in_array('oauth_subject', $columns, true)) $pdo->exec('ALTER TABLE users ADD COLUMN oauth_subject VARCHAR(255) NULL AFTER oauth_provider');
+    if (!in_array('seller_enabled', $columns, true)) $pdo->exec('ALTER TABLE users ADD COLUMN seller_enabled TINYINT(1) NOT NULL DEFAULT 0 AFTER role');
     $indexes = $pdo->query("SHOW INDEX FROM users WHERE Key_name='users_oauth_identity'")->fetchAll();
     if (!$indexes) $pdo->exec('ALTER TABLE users ADD UNIQUE KEY users_oauth_identity (oauth_provider, oauth_subject)');
     $pdo->exec('ALTER TABLE users MODIFY email VARCHAR(190) NULL');
+    $pdo->exec("UPDATE users SET seller_enabled=1 WHERE role='seller' AND seller_enabled=0");
+}
+
+function user_can_sell(array $user): bool {
+    return ($user['role'] ?? '') === 'seller' || !empty($user['seller_enabled']);
 }

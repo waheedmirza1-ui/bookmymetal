@@ -7,8 +7,10 @@
     .then(({ response, data }) => {
       if (!response.ok || !data.authenticated) throw new Error('not signed in');
       const user = data.user || {};
-      if (user.role !== 'seller') {
-        note.textContent = 'You are signed in as a buyer. Create a seller account to publish listings.';
+      if (user.role !== 'seller' && !user.seller_enabled) {
+        note.textContent = 'Your account can source immediately. Activate selling when you are ready to publish listings.';
+        cta.innerHTML = '<button id="activate-selling" class="primary" type="button">Activate selling <span>→</span></button><a class="secondary" href="../marketplace/">Continue sourcing</a>';
+        document.querySelector('#activate-selling').addEventListener('click', activateSelling);
         return;
       }
       note.textContent = `Signed in as ${user.company || user.name || 'seller'}. Your seller workspace is ready to set up.`;
@@ -41,5 +43,13 @@
       }).catch(error => { status.className = 'form-status error'; status.textContent = error.message || 'Unable to submit listing.'; }).finally(() => { button.disabled = false; });
     });
     loadProducts(); loadEnquiries();
+  }
+  function activateSelling() {
+    const button = document.querySelector('#activate-selling');
+    button.disabled = true; button.textContent = 'Activating…';
+    fetch('../api/seller-activate.php', { method: 'POST', credentials: 'include' })
+      .then(async (response) => ({ response, data: await response.json() }))
+      .then(({ response, data }) => { if (!response.ok || !data.ok) throw new Error(data.error || 'Unable to activate selling.'); window.location.reload(); })
+      .catch((error) => { note.textContent = error.message || 'Unable to activate selling.'; button.disabled = false; button.innerHTML = 'Activate selling <span>→</span>'; });
   }
 })();
