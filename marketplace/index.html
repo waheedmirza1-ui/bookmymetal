@@ -3,35 +3,51 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Discover products, services and suppliers through BookMyMetal's video-first global B2B marketplace.">
+  <meta name="description" content="A video-first global B2B marketplace for products, services and suppliers.">
   <title>Marketplace — BookMyMetal</title>
-  <link rel="stylesheet" href="../assets/bmm.css">
-  <link rel="stylesheet" href="../assets/marketplace-v3.css">
-  <link rel="stylesheet" href="../assets/marketplace-v4.css">
-  <link rel="stylesheet" href="../assets/marketplace-listings.css">
+  <link rel="stylesheet" href="../assets/marketplace-prompt.css?v=1">
   <script src="../assets/marketplace-data.js" defer></script>
+  <script src="../assets/marketplace.js?v=1" defer></script>
 </head>
 <body>
-  <header class="top"><a class="logo" href="../marketplace/">BOOK<span>MY</span>METAL</a><nav><a href="../marketplace/" aria-current="page">Marketplace</a><a href="../categories/">Categories</a><a href="../suppliers/">Suppliers</a><a href="../rfq/">RFQ</a></nav><div class="header-actions"><a href="../compare/">Compare</a><a href="../cart/">Cart</a><a href="../account/">Account</a><a class="btn blue" href="../seller/">Sell on BookMyMetal</a></div><details class="mobile-menu"><summary aria-label="Open menu">Menu</summary><div><a href="../marketplace/">Marketplace</a><a href="../categories/">Categories</a><a href="../suppliers/">Suppliers</a><a href="../rfq/">RFQ</a><a href="../compare/">Compare</a><a href="../cart/">Cart</a><a href="../account/">Account</a><a href="../seller/">Sell on BookMyMetal</a></div></details></header>
-  <main>
-    <section class="hero market-hero">
-      <div class="hero-copy"><label>VIDEO-FIRST GLOBAL B2B MARKETPLACE · POWERED BY AI</label><h1>See it. Understand it.<br>Source it.</h1><p>Discover products, services and suppliers across industries through real business video.</p></div>
-      <div class="market-demo"><video controls playsinline preload="metadata" poster="../assets/images/bookmymetal-platform-demo-poster.png" aria-label="BookMyMetal platform demonstration"><source src="../assets/videos/bookmymetal-launch-69s.mp4" type="video/mp4">Your browser does not support video.</video><span>Official BookMyMetal platform demo · 1:09</span></div>
-    </section>
-    <section class="searchdock" aria-label="Global marketplace search"><form class="search" action="../search/" method="get"><input name="q" placeholder="Describe what you need — product, specification, quantity or location" aria-label="What are you looking for?"><button class="search-tool" type="button" data-unavailable="Voice search is not available until speech-to-text is configured for this deployment." aria-label="Voice search">Voice</button><button class="search-tool" type="button" data-unavailable="Image search is not available until an image-understanding provider is configured." aria-label="Image search">Image</button><button class="blue">Search</button></form><p class="search-provider-status" id="search-provider-status" role="status">Text search available. Voice, image, and future video search use secure provider integrations.</p><div class="search-suggestions"><span>Try:</span><a href="../search/?q=industrial+machines">Industrial Machines</a><a href="../search/?q=furniture">Furniture</a><a href="../search/?q=construction+materials">Construction Materials</a><a href="../search/?q=automotive+components">Automotive Components</a><a href="../search/?q=agricultural+equipment">Agricultural Equipment</a><a href="../search/?q=safety+ppe">Safety &amp; PPE</a></div></section>
-    <div class="container">
-      <div class="chips" aria-label="Marketplace filters"><button class="chip active" type="button">All discovery</button><button class="chip" type="button">Products</button><button class="chip" type="button">Services</button><button class="chip" type="button">Suppliers</button></div>
-      <section class="discovery-empty"><div><label>VIDEO DISCOVERY</label><h2>Seller videos, published after review.</h2><p>Public product and service videos appear here only after BookMyMetal moderation. Browse the marketplace or start a requirement while the supplier video feed grows.</p></div><div class="discovery-actions"><a class="btn blue" href="../categories/">Explore categories</a><a class="btn" href="../rfq/">Post a requirement</a></div></section>
-      <section class="approved-listings"><div class="sectionhead"><div><label>APPROVED SELLER LISTINGS</label><h2>Watch real supplier product videos.</h2><p>Only listings approved by BookMyMetal moderation are shown here.</p></div></div><div id="approved-listing-grid" class="approved-listing-grid" aria-live="polite"><p class="emptyState">Loading approved seller listings…</p></div></section>
-      <section><div class="sectionhead"><div><label>EXPLORE MARKETPLACE</label><h2>Products and services across industries.</h2><p>Metals and steel are a founding strength—one of many marketplace verticals.</p></div><a class="text-link" href="../categories/">View all categories →</a></div><div class="categorygrid categorygrid-wide" id="category-grid"></div></section>
-      <section class="supplier-section"><div class="sectionhead"><div><label>SUPPLIER DISCOVERY</label><h2>Businesses to research and claim.</h2><p>These profiles are research-imported, not verified BookMyMetal members.</p></div><a class="text-link" href="../suppliers/">Supplier directory →</a></div><div class="suppliergrid" id="supplier-grid"><div class="emptyState"><strong>Loading supplier directory…</strong></div></div></section>
-      <section class="how-marketplace"><label>HOW BOOKMYMETAL WORKS</label><div><span>01 <b>Search</b></span><i>→</i><span>02 <b>Watch</b></span><i>→</i><span>03 <b>Understand</b></span><i>→</i><span>04 <b>Compare / RFQ</b></span><i>→</i><span>05 <b>Order</b></span></div></section>
-      <section class="role-panels"><article><label>FOR BUYERS</label><h2>Find the right supplier faster.</h2><p>Start with a requirement, then compare verified capability as it becomes available.</p><a class="btn blue" href="../rfq/">Start sourcing</a></article><article><label>FOR SELLERS</label><h2>Show buyers what you actually provide.</h2><p>Build a profile, upload genuine product video, and publish after moderation.</p><a class="btn" href="../seller/">Sell on BookMyMetal</a></article></section>
-      <section class="cta"><div><label>AI SOURCING</label><h2>Start with the requirement, not the category.</h2><p>Describe what you need. BookMyMetal can route a requirement to the right marketplace area as connected search providers and verified supply become available.</p></div><a class="btn blue" href="../rfq/">Post a requirement →</a></section>
+  <header class="market-header">
+    <a class="market-logo" href="../marketplace/" aria-label="BookMyMetal marketplace">BookMy<span>Metal</span></a>
+    <nav class="market-nav" aria-label="Primary navigation">
+      <a href="../marketplace/" aria-current="page">Marketplace</a><a href="../categories/">Categories</a><a href="../suppliers/">Suppliers</a><a href="../rfq/">RFQ</a>
+    </nav>
+    <div id="account-navigation" class="account-navigation">
+      <a class="login-link" href="../account/">Log in</a><a class="signup-link" href="../account/">Sign up</a>
     </div>
+    <details class="market-mobile"><summary aria-label="Open menu">Menu</summary><div id="mobile-navigation"><a href="../marketplace/">Marketplace</a><a href="../categories/">Categories</a><a href="../suppliers/">Suppliers</a><a href="../rfq/">RFQ</a><a href="../account/">Log in / Sign up</a></div></details>
+  </header>
+  <main>
+    <section class="market-intro">
+      <p class="eyebrow">VIDEO-FIRST B2B MARKETPLACE</p>
+      <h1>See it. Understand it.<br>Source it.</h1>
+      <p class="intro-copy">Watch real supplier product and service videos from a growing global marketplace.</p>
+      <form class="market-search" action="../search/" method="get">
+        <input name="q" aria-label="Search products, services or suppliers" placeholder="Search products, services, suppliers or specifications">
+        <button type="submit">Search</button>
+      </form>
+      <div class="popular-links"><span>Browse:</span><a href="../categories/?category=construction-building-materials">Construction</a><a href="../categories/?category=industrial-machinery-equipment">Industrial equipment</a><a href="../categories/?category=automotive-components">Automotive</a><a href="../categories/?category=agriculture-equipment">Agriculture</a><a href="../categories/?category=technology-business-solutions">Business solutions</a></div>
+    </section>
+    <section class="browse-bar" aria-label="Marketplace filters">
+      <div class="filter-scroll"><button class="filter active" type="button" data-filter="all">All videos</button><button class="filter" type="button" data-filter="product">Products</button><button class="filter" type="button" data-filter="service">Services</button><a class="filter-link" href="../categories/">All categories →</a></div>
+      <p id="listing-count" aria-live="polite">Loading verified seller videos…</p>
+    </section>
+    <section class="reel-section" aria-labelledby="reel-heading">
+      <div class="section-title"><div><p class="eyebrow">EXPLORE REELS</p><h2 id="reel-heading">Watch before you source.</h2></div><a href="../rfq/">Post a requirement →</a></div>
+      <div id="reel-grid" class="reel-grid" aria-live="polite"><div class="reel-empty"><strong>Loading approved supplier videos…</strong></div></div>
+    </section>
+    <section class="category-section" aria-labelledby="category-heading">
+      <div class="section-title"><div><p class="eyebrow">EXPLORE BY CATEGORY</p><h2 id="category-heading">A global marketplace, beyond any one industry.</h2></div><a href="../categories/">View all →</a></div>
+      <div id="category-grid" class="category-grid"></div>
+    </section>
+    <section class="market-steps">
+      <div><p class="eyebrow">HOW IT WORKS</p><h2>Less uncertainty. Better sourcing.</h2></div>
+      <ol><li><b>01</b><span>Discover</span><small>Search products, services and suppliers.</small></li><li><b>02</b><span>Watch</span><small>See real capability before contacting a seller.</small></li><li><b>03</b><span>Request</span><small>Compare options and send an RFQ.</small></li></ol>
+    </section>
   </main>
-  <footer>BookMyMetal — Global video-first B2B marketplace · Products + Services + Suppliers</footer>
-  <button class="ai-assistant" type="button" data-unavailable="BookMyMetal AI chat will be available when a secure AI provider and authenticated tools are configured." aria-label="Ask BookMyMetal AI">Ask BookMyMetal AI</button>
-  <script>window.addEventListener('DOMContentLoaded',function(){var grid=document.getElementById('category-grid'),status=document.getElementById('search-provider-status'),supplierGrid=document.getElementById('supplier-grid'),listingGrid=document.getElementById('approved-listing-grid');function escapeHtml(value){var node=document.createElement('span');node.textContent=String(value||'');return node.innerHTML}if(window.BMMMarketplaceData){grid.innerHTML=window.BMMMarketplaceData.categories.map(function(c){return '<a href="../categories/?category='+encodeURIComponent(c.slug)+'"><span>'+c.name+'</span><small>Explore →</small></a>'}).join('')}document.querySelectorAll('[data-unavailable]').forEach(function(button){button.addEventListener('click',function(){status.textContent=button.getAttribute('data-unavailable')})});fetch('../api/marketplace-products.php').then(function(response){if(!response.ok)throw new Error('Unavailable');return response.json()}).then(function(data){var items=data.results||[];listingGrid.innerHTML=items.length?items.map(function(item){var spec=(item.specs&&item.specs[0])||'Specification available on request.';var video=item.video_url?'<video controls playsinline preload="metadata" src="'+encodeURI(item.video_url)+'"></video>':'<div class="listing-video-placeholder">Video unavailable</div>';return '<article class="approved-card">'+video+'<div class="approved-card-copy"><span class="approved-category">'+escapeHtml(item.category)+'</span><h3>'+escapeHtml(item.title)+'</h3><p>'+escapeHtml(spec)+'</p><small>'+escapeHtml(item.seller)+' · '+escapeHtml(item.location)+'</small><div class="actions"><a class="btn" href="../compare/?product='+encodeURIComponent(item.db_id)+'">Compare</a><a class="btn blue" href="../rfq/?product='+encodeURIComponent(item.db_id)+'">Request quote</a></div></div></article>'}).join(''):'<p class="emptyState"><strong>No approved seller videos yet.</strong><span>New listings appear here after moderation.</span></p>'}).catch(function(){listingGrid.innerHTML='<p class="emptyState"><strong>Approved seller listings are unavailable.</strong><span>Please refresh and try again.</span></p>'});fetch('../data/sellers.json').then(function(response){if(!response.ok)throw new Error('Unavailable');return response.json()}).then(function(sellers){supplierGrid.innerHTML=sellers.map(function(seller){return '<article class="suppliercard research-card"><div class="supplier-identity">'+seller.company.slice(0,2).toUpperCase()+'</div><span class="status-badge">Research Imported · Unverified</span><h3>'+seller.company+'</h3><p>'+seller.location+' · '+seller.category+'</p><small>Profile requires claim and BookMyMetal verification before public seller-video publishing.</small><div class="actions"><a class="btn" href="../suppliers/">View profile</a><a class="btn blue" href="../rfq/">Request quote</a></div></article>'}).join('')}).catch(function(){supplierGrid.innerHTML='<div class="emptyState"><strong>Supplier directory unavailable</strong><span>Research-imported profiles could not be loaded.</span></div>'})});</script>
+  <footer>BookMyMetal · Global video-first B2B marketplace</footer>
 </body>
 </html>
