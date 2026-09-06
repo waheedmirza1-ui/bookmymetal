@@ -106,6 +106,8 @@
   const otpProfileForm = document.querySelector('#otp-profile-form');
   const resetForm = document.querySelector('#reset-password-form');
   const primaryPanel = document.querySelector('#primary-auth-panel');
+  const registerPanel = document.querySelector('#register-panel');
+  const loginPanel = document.querySelector('#login-panel');
   const usePassword = document.querySelector('#use-password');
   const createPasswordAccount = document.querySelector('#create-password-account');
   let destination = '';
