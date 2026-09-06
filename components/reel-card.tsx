@@ -2,7 +2,7 @@
 
 import { Play, BadgeCheck, MapPin, Eye } from 'lucide-react'
 import type { Listing } from '@/lib/data'
-import { cn, publicAsset } from '@/lib/utils'
+import { cn } from '@/lib/utils'
 
 export function ReelCard({ item }: { item: Listing }) {
   return (
@@ -10,7 +10,7 @@ export function ReelCard({ item }: { item: Listing }) {
       <div className="relative aspect-[9/16] overflow-hidden rounded-lg border border-border bg-muted">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src={item.poster || publicAsset('/placeholder.svg')}
+          src={item.poster || '/placeholder.svg'}
           alt={`${item.name} by ${item.supplier}`}
           className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
         />

@@ -44,7 +44,7 @@ export function SiteHeader() {
         </div>
 
         <div className="ml-auto flex items-center gap-2 md:ml-0">
-          <a href="/seller/" className="hidden items-center gap-1.5 rounded-full border border-border px-3.5 py-2 text-sm font-medium text-foreground transition-colors hover:bg-muted sm:inline-flex">
+          <a href="https://www.bookmymetal.com/seller/" className="hidden items-center gap-1.5 rounded-full border border-border px-3.5 py-2 text-sm font-medium text-foreground transition-colors hover:bg-muted sm:inline-flex">
             <PlusCircle className="h-4 w-4" />
             Post a reel
           </a>
@@ -78,7 +78,7 @@ export function SiteHeader() {
               </a>
             ))}
             <div className="mt-2 flex gap-2">
-              <a href="/seller/" className="flex-1 rounded-full border border-border px-4 py-2 text-center text-sm font-medium">
+              <a href="https://www.bookmymetal.com/seller/" className="flex-1 rounded-full border border-border px-4 py-2 text-center text-sm font-medium">
                 Post a reel
               </a>
               <Link href="/account" className="flex-1 rounded-full bg-primary px-4 py-2 text-center text-sm font-semibold text-primary-foreground">

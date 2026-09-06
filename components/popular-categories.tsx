@@ -1,5 +1,4 @@
 import { popularCategories } from '@/lib/data'
-import { publicAsset } from '@/lib/utils'
 
 export function PopularCategories() {
   return (
@@ -24,7 +23,7 @@ export function PopularCategories() {
               <div className="aspect-[4/3] overflow-hidden bg-muted">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src={c.poster || publicAsset('/placeholder.svg')}
+                  src={c.poster || '/placeholder.svg'}
                   alt={c.name}
                   className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />

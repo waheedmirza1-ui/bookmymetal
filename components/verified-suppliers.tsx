@@ -1,6 +1,5 @@
 import { BadgeCheck, MapPin, Star, Video } from 'lucide-react'
 import { verifiedSuppliers } from '@/lib/data'
-import { publicAsset } from '@/lib/utils'
 
 export function VerifiedSuppliers() {
   return (
@@ -32,7 +31,7 @@ export function VerifiedSuppliers() {
               <div className="h-16 w-16 shrink-0 overflow-hidden rounded-md bg-muted">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src={s.poster || publicAsset('/placeholder.svg')}
+                  src={s.poster || '/placeholder.svg'}
                   alt={s.name}
                   className="h-full w-full object-cover"
                 />

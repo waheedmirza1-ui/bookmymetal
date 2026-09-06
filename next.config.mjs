@@ -1,8 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  basePath: '/marketplace',
-  env: {
-    NEXT_PUBLIC_BASE_PATH: '/marketplace',
+  async rewrites() {
+    return [{ source: '/api/:path*', destination: 'https://www.bookmymetal.com/api/:path*' }]
   },
   async headers() {
     return [

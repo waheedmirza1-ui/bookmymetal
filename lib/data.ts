@@ -13,8 +13,6 @@ export type Listing = {
   type: 'product' | 'service'
 }
 
-import { publicAsset } from '@/lib/utils'
-
 export const categories = [
   'All',
   'Machinery',
@@ -30,7 +28,7 @@ export const categories = [
   'Industrial',
 ]
 
-const reel = (n: string) => publicAsset(`/reels/${n}.png`)
+const reel = (n: string) => `/reels/${n}.png`
 
 export const trending: Listing[] = [
   {

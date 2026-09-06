@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { FormEvent, useState } from 'react'
 
-const api = 'https://www.bookmymetal.com/api'
+const api = '/api'
 type View = 'start' | 'otp' | 'profile' | 'password-login' | 'password-signup' | 'reset'
 
 async function post(path: string, body: Record<string, string>) {
@@ -40,7 +40,7 @@ export default function AccountPage() {
 
   const field = 'mt-4 w-full rounded-xl border border-input bg-background px-3 py-3 text-sm outline-none focus:border-primary'
   const primary = 'mt-5 w-full rounded-xl bg-primary px-4 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90 disabled:opacity-60'
-  const oauth = `${api}/oauth.php?provider=google&return=%2Fmarketplace%2F`
+  const oauth = `${api}/oauth.php?provider=google&return=${encodeURIComponent('https://marketplace.bookmymetal.com/')}`
 
   return <main className="min-h-dvh bg-muted/50 px-4 py-10 sm:py-16"><section className="mx-auto w-full max-w-md rounded-2xl border border-border bg-card p-6 shadow-sm sm:p-9">
     <Link href="/" className="text-xl font-semibold tracking-tight">BookMy<span className="text-primary">Metal</span></Link>
