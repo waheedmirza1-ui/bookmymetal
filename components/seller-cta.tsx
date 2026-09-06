@@ -18,11 +18,11 @@ export function SellerCta() {
               buyers worldwide, and manage quotes from one dashboard.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
-              <a href="https://www.bookmymetal.com/seller/" className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90">
+              <a href="/seller/" className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90">
                 Start selling
                 <ArrowRight className="h-4 w-4" />
               </a>
-              <a href="https://www.bookmymetal.com/rfq/" className="rounded-full border border-background/30 px-5 py-2.5 text-sm font-semibold text-background transition-colors hover:bg-background/10">
+              <a href="/rfq/" className="rounded-full border border-background/30 px-5 py-2.5 text-sm font-semibold text-background transition-colors hover:bg-background/10">
                 Learn more
               </a>
             </div>

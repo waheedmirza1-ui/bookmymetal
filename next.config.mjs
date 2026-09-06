@@ -1,5 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  basePath: '/marketplace',
+  env: {
+    NEXT_PUBLIC_BASE_PATH: '/marketplace',
+  },
   async headers() {
     return [
       {
