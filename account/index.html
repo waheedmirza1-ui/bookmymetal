@@ -104,13 +104,17 @@
     <p class="signin-line">Already have an account? <button id="signin-shortcut" type="button">Sign in</button></p>
   </main>
 
-  <script src="../assets/account.js?v=one-account-1" defer></script>
+  <script src="../assets/account.js?v=one-account-2" defer></script>
   <script>
     document.addEventListener('DOMContentLoaded', function(){
       var shortcut=document.getElementById('signin-shortcut');
       if(shortcut) shortcut.addEventListener('click', function(){
         var primary=document.getElementById('primary-auth-panel');
         if(primary) primary.hidden=true;
+        var register=document.getElementById('register-panel');
+        var login=document.getElementById('login-panel');
+        if(register) register.hidden=true;
+        if(login) login.hidden=false;
         document.body.classList.add('password-login');
         var email=document.querySelector('#login-panel input[name="email"]');
         if(email) email.focus();

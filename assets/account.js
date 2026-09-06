@@ -145,8 +145,8 @@
   forgot?.addEventListener('click', () => { resetRequestForm.hidden = !resetRequestForm.hidden; if (!resetRequestForm.hidden) resetRequestForm.querySelector('input').focus(); });
   resetRequestForm?.addEventListener('submit', async (event) => { event.preventDefault(); try { await sendOtp(String(new FormData(resetRequestForm).get('destination') || ''), 'password_reset'); } catch (error) { show(error.message, true); } });
   resetForm?.addEventListener('submit', async (event) => { event.preventDefault(); const data = new FormData(resetForm); const password = String(data.get('password') || ''); if (password.length < 8 || password !== String(data.get('confirmPassword') || '')) return show('Use matching passwords with at least 8 characters.', true); try { await otpRequest({ action: 'reset_password', password }); show('Password updated. You can now sign in.'); } catch (error) { show(error.message, true); } });
-  usePassword?.addEventListener('click', () => { primaryPanel.hidden = true; document.body.classList.add('password-login'); document.querySelector('#login-panel input')?.focus(); });
-  createPasswordAccount?.addEventListener('click', () => { document.body.classList.remove('password-login'); document.body.classList.add('password-register'); document.querySelector('#register-panel input')?.focus(); });
+  usePassword?.addEventListener('click', () => { primaryPanel.hidden = true; registerPanel.hidden = true; loginPanel.hidden = false; document.body.classList.add('password-login'); document.querySelector('#login-panel input')?.focus(); });
+  createPasswordAccount?.addEventListener('click', () => { primaryPanel.hidden = true; loginPanel.hidden = true; registerPanel.hidden = false; document.body.classList.remove('password-login'); document.body.classList.add('password-register'); document.querySelector('#register-panel input')?.focus(); });
   const params = new URLSearchParams(window.location.search);
   if (params.get('oauth_error')) show(params.get('oauth_error') === 'credentials' ? 'Blocked — requires OAuth credentials configured on the server.' : 'Social sign-in was not completed.', true);
 })();
