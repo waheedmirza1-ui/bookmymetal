@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Create your BookMyMetal buyer or seller account.">
+  <title>Create a free account — BookMyMetal</title>
+  <link rel="stylesheet" href="../assets/account.css?v=auth-final-2">
+  <link rel="stylesheet" href="../assets/auth-additions.css?v=auth-final-1">
+</head>
+<body>
+  <main class="auth-page">
+    <section class="account-card" aria-label="BookMyMetal account access">
+      <a class="card-brand" href="../marketplace/" aria-label="BookMyMetal marketplace">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="brand-word">BookMy<span>Metal</span></span>
+      </a>
+
+      <section id="primary-auth-panel" class="primary-auth">
+        <div class="card-heading">
+          <h1>Create a free account</h1>
+          <p>Join buyers and sellers from around the world.</p>
+        </div>
+
+        <div class="social-stack" aria-label="Google sign in">
+          <a class="oauth-button google-button" data-provider="google" href="../api/oauth.php?provider=google&amp;return=/account/">
+            <span class="google-g" aria-hidden="true">G</span>
+            <span>Continue with Google</span>
+            <b class="oauth-badge">Checking…</b>
+          </a>
+        </div>
+
+        <div class="divider"><span>or</span></div>
+
+        <form id="primary-otp-request-form" class="otp-request-form otp-form" novalidate>
+          <label>Email address or mobile number
+            <div class="input-shell">
+              <span class="input-icon" aria-hidden="true">✉</span>
+              <input name="destination" autocomplete="username" inputmode="email" placeholder="name@company.com or +91 98765 43210">
+            </div>
+          </label>
+          <button class="primary" type="submit">Continue <span>→</span></button>
+        </form>
+
+        <button id="use-password" class="text-button" type="button">Use password instead</button>
+
+        <p class="terms main-terms">By creating an account, you agree to our <a href="../terms/">Terms of Service</a> and <a href="../privacy/">Privacy Policy</a>.</p>
+      </section>
+
+      <div class="tabs" role="tablist" aria-label="Account access">
+        <button id="register-tab" class="active" type="button" role="tab" aria-selected="true" aria-controls="register-panel">Create account</button>
+        <button id="login-tab" type="button" role="tab" aria-selected="false" aria-controls="login-panel">Sign in</button>
+      </div>
+
+      <div id="register-panel" role="tabpanel" aria-labelledby="register-tab">
+        <div class="card-heading"><h2>Create an account</h2><p>Use email and password instead.</p></div>
+        <form id="register-form" novalidate>
+          <input type="hidden" name="role" value="buyer">
+          <label>Full name<input name="name" autocomplete="name" required minlength="2" placeholder="Your full name"></label>
+          <label>Company <span class="optional">Optional</span><input name="company" autocomplete="organization" placeholder="Company name"></label>
+          <label>Work email<input name="email" type="email" autocomplete="email" required placeholder="you@company.com"></label>
+          <label>Password<input name="password" type="password" autocomplete="new-password" required minlength="8" placeholder="At least 8 characters"><small>Use 10 or more characters when possible.</small></label>
+          <label>Confirm password<input name="confirmPassword" type="password" autocomplete="new-password" required minlength="8" placeholder="Re-enter your password"></label>
+          <button class="primary" type="submit">Create account <span>→</span></button>
+        </form>
+      </div>
+
+      <div id="login-panel" role="tabpanel" aria-labelledby="login-tab" hidden>
+        <div class="card-heading"><h2>Welcome back</h2><p>Sign in with your existing password.</p></div>
+        <form id="login-form" novalidate>
+          <label>Work email<input name="email" type="email" autocomplete="email" required placeholder="you@company.com"></label>
+          <label>Password<input name="password" type="password" autocomplete="current-password" required placeholder="Your password"></label>
+          <button class="primary" type="submit">Sign in <span>→</span></button>
+        </form>
+        <button id="forgot-password" class="text-button" type="button">Forgot password?</button>
+        <form id="reset-request-form" class="otp-form" novalidate hidden><label>Account email<input name="destination" type="email" autocomplete="email" placeholder="you@company.com"></label><button class="secondary-primary" type="submit">Send password reset code</button></form>
+        <button id="create-password-account" class="text-button" type="button">Create an account with email and password</button>
+      </div>
+
+      <section id="otp-verify-panel" class="auth-subflow" hidden>
+        <div class="card-heading"><h2>Enter verification code</h2><p id="otp-destination-label">We sent a 6-digit code.</p></div>
+        <form id="otp-verify-form" novalidate><label>6-digit OTP<input name="code" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6}" maxlength="6" placeholder="000000"></label><button class="primary" type="submit">Verify code <span>→</span></button></form>
+        <button id="otp-resend" class="text-button" type="button" disabled>Resend code</button>
+      </section>
+
+      <section id="otp-profile-panel" class="auth-subflow" hidden>
+        <div class="card-heading"><h2>Finish your account</h2><p>Tell us a little about yourself.</p></div>
+        <form id="otp-profile-form" novalidate>
+          <label data-profile-field>Full name<input name="name" autocomplete="name" required minlength="2" placeholder="Your full name"></label>
+          <label data-profile-field>Company <span class="optional">Optional</span><input name="company" autocomplete="organization" placeholder="Company name"></label>
+          <input type="hidden" name="role" value="buyer">
+          <button class="primary" type="submit">Continue <span>→</span></button>
+        </form>
+      </section>
+
+      <section id="reset-password-panel" class="auth-subflow" hidden>
+        <div class="card-heading"><h2>Set a new password</h2><p>Use at least 8 characters; 10 or more is recommended.</p></div>
+        <form id="reset-password-form" novalidate><label>New password<input name="password" type="password" autocomplete="new-password" required minlength="8"></label><label>Confirm password<input name="confirmPassword" type="password" autocomplete="new-password" required minlength="8"></label><button class="primary" type="submit">Save new password</button></form>
+      </section>
+
+      <p id="form-status" class="form-status" role="status" aria-live="polite" hidden></p>
+    </section>
+
+    <p class="signin-line">Already have an account? <button id="signin-shortcut" type="button">Sign in</button></p>
+  </main>
+
+  <script src="../assets/account.js?v=one-account-5" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function(){
+      var shortcut=document.getElementById('signin-shortcut');
+      if(shortcut) shortcut.addEventListener('click', function(){
+        var primary=document.getElementById('primary-auth-panel');
+        if(primary) primary.hidden=true;
+        var register=document.getElementById('register-panel');
+        var login=document.getElementById('login-panel');
+        if(register){register.hidden=true;register.style.display='none';}
+        if(login){login.removeAttribute('hidden');login.style.display='block';}
+        document.body.classList.add('password-login');
+        var email=document.querySelector('#login-panel input[name="email"]');
+        if(email) email.focus();
+      });
+    });
+  </script>
+</body>
+</html>

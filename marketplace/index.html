@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="A video-first global B2B marketplace for products, services and suppliers.">
+  <title>Marketplace — BookMyMetal</title>
+  <link rel="stylesheet" href="../assets/marketplace-prompt.css?v=2">
+  <script src="../assets/marketplace-data.js" defer></script>
+  <script src="../assets/marketplace.js?v=2" defer></script>
+</head>
+<body>
+  <header class="market-header">
+    <a class="market-logo" href="../marketplace/" aria-label="BookMyMetal marketplace">BookMy<span>Metal</span></a>
+    <nav class="market-nav" aria-label="Primary navigation">
+      <a href="../marketplace/" aria-current="page">Marketplace</a><a href="../categories/">Categories</a><a href="../suppliers/">Suppliers</a><a href="../rfq/">RFQ</a>
+    </nav>
+    <div id="account-navigation" class="account-navigation">
+      <a class="login-link" href="../account/">Log in</a><a class="signup-link" href="../account/">Sign up</a>
+    </div>
+    <details class="market-mobile"><summary aria-label="Open menu">Menu</summary><div id="mobile-navigation"><a href="../marketplace/">Marketplace</a><a href="../categories/">Categories</a><a href="../suppliers/">Suppliers</a><a href="../rfq/">RFQ</a><a href="../account/">Log in / Sign up</a></div></details>
+  </header>
+  <main>
+    <section class="market-intro">
+      <p class="eyebrow">VIDEO-FIRST B2B MARKETPLACE</p>
+      <h1>See it. Understand it.<br>Source it.</h1>
+      <p class="intro-copy">Watch real supplier product and service videos from a growing global marketplace.</p>
+      <form class="market-search" action="../search/" method="get">
+        <input name="q" aria-label="Search products, services or suppliers" placeholder="Search products, services, suppliers or specifications">
+        <button type="submit">Search</button>
+      </form>
+      <div class="popular-links"><span>Browse:</span><a href="../categories/?category=construction-building-materials">Construction</a><a href="../categories/?category=industrial-machinery-equipment">Industrial equipment</a><a href="../categories/?category=automotive-components">Automotive</a><a href="../categories/?category=agriculture-equipment">Agriculture</a><a href="../categories/?category=technology-business-solutions">Business solutions</a></div>
+    </section>
+    <section class="browse-bar" aria-label="Marketplace filters">
+      <div class="filter-scroll"><button class="filter active" type="button" data-filter="all">All videos</button><button class="filter" type="button" data-filter="product">Products</button><button class="filter" type="button" data-filter="service">Services</button><a class="filter-link" href="../categories/">All categories →</a></div>
+      <p id="listing-count" aria-live="polite">Loading verified seller videos…</p>
+    </section>
+    <section class="reel-section" aria-labelledby="reel-heading">
+      <div class="section-title"><div><p class="eyebrow">EXPLORE REELS</p><h2 id="reel-heading">Watch before you source.</h2></div><a href="../rfq/">Post a requirement →</a></div>
+      <div id="reel-grid" class="reel-grid" aria-live="polite"><div class="reel-empty"><strong>Loading approved supplier videos…</strong></div></div>
+    </section>
+    <section class="category-section" aria-labelledby="category-heading">
+      <div class="section-title"><div><p class="eyebrow">EXPLORE BY CATEGORY</p><h2 id="category-heading">A global marketplace, beyond any one industry.</h2></div><a href="../categories/">View all →</a></div>
+      <div id="category-grid" class="category-grid"></div>
+    </section>
+    <section class="market-steps">
+      <div><p class="eyebrow">HOW IT WORKS</p><h2>Less uncertainty. Better sourcing.</h2></div>
+      <ol><li><b>01</b><span>Discover</span><small>Search products, services and suppliers.</small></li><li><b>02</b><span>Watch</span><small>See real capability before contacting a seller.</small></li><li><b>03</b><span>Request</span><small>Compare options and send an RFQ.</small></li></ol>
+    </section>
+  </main>
+  <footer>BookMyMetal · Global video-first B2B marketplace</footer>
+</body>
+</html>

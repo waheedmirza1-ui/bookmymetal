@@ -1,0 +1,16 @@
+<?php
+declare(strict_types=1);
+require_once __DIR__ . '/db.php';
+header('Content-Type: application/json; charset=utf-8');
+header('Access-Control-Allow-Origin: https://www.bookmymetal.com');
+header('Access-Control-Allow-Credentials: true');
+header('Access-Control-Allow-Headers: Content-Type');
+header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
+if($_SERVER['REQUEST_METHOD']==='OPTIONS')exit;
+session_set_cookie_params(['secure'=>(!empty($_SERVER['HTTPS'])&&$_SERVER['HTTPS']!=='off'),'httponly'=>true,'samesite'=>'Lax','path'=>'/']);if(session_status()!==PHP_SESSION_ACTIVE)session_start();
+$user=$_SESSION['user']??null;if(!$user||($user['role']??'')==='admin'){http_response_code(401);echo json_encode(['ok'=>false,'error'=>'Sign in with a marketplace account.']);exit;}
+$pdo->exec("CREATE TABLE IF NOT EXISTS orders (id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,order_number VARCHAR(32) NOT NULL UNIQUE,buyer_user_id BIGINT UNSIGNED NOT NULL,status VARCHAR(30) NOT NULL DEFAULT 'confirmed',payment_status VARCHAR(30) NOT NULL DEFAULT 'pending',total_amount DECIMAL(14,2) NULL,currency VARCHAR(8) NOT NULL DEFAULT 'INR',created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,PRIMARY KEY(id),INDEX idx_buyer_created(buyer_user_id,created_at)) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
+$pdo->exec("CREATE TABLE IF NOT EXISTS order_items (id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,order_id BIGINT UNSIGNED NOT NULL,product_id BIGINT UNSIGNED NULL,title VARCHAR(220) NOT NULL,seller VARCHAR(220) NULL,quantity INT NOT NULL DEFAULT 1,unit_price DECIMAL(14,2) NULL,created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,PRIMARY KEY(id),INDEX idx_order(order_id)) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
+if($_SERVER['REQUEST_METHOD']==='GET'){$s=$pdo->prepare('SELECT id,order_number,status,payment_status,total_amount,currency,created_at FROM orders WHERE buyer_user_id=? ORDER BY created_at DESC');$s->execute([(int)$user['id']]);echo json_encode(['ok'=>true,'orders'=>$s->fetchAll()]);exit;}
+$in=json_decode(file_get_contents('php://input'),true)?:[];$items=$in['items']??[];if(!is_array($items)||count($items)<1){http_response_code(422);echo json_encode(['ok'=>false,'error'=>'Cart is empty.']);exit;}
+try{$pdo->beginTransaction();$num='BMM-'.strtoupper(bin2hex(random_bytes(4)));$s=$pdo->prepare('INSERT INTO orders(order_number,buyer_user_id,status,payment_status,total_amount,currency) VALUES(?,?,"confirmed","pending",?,?)');$s->execute([$num,(int)$user['id'],isset($in['total'])?(float)$in['total']:null,trim((string)($in['currency']??'INR'))?:'INR']);$oid=(int)$pdo->lastInsertId();$i=$pdo->prepare('INSERT INTO order_items(order_id,product_id,title,seller,quantity,unit_price) VALUES(?,?,?,?,?,?)');foreach($items as $item){$pid=(int)($item['id']??0);$title=trim((string)($item['title']??''));if($title==='')continue;$i->execute([$oid,$pid?:null,$title,trim((string)($item['seller']??''))?:null,max(1,(int)($item['quantity']??1)),isset($item['unit_price'])?(float)$item['unit_price']:null]);}$pdo->commit();echo json_encode(['ok'=>true,'order_number'=>$num,'status'=>'confirmed','payment_status'=>'pending']);}catch(Throwable $e){if($pdo->inTransaction())$pdo->rollBack();http_response_code(500);echo json_encode(['ok'=>false,'error'=>'Unable to create order.']);}
