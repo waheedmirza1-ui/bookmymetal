@@ -1,0 +1,56 @@
+@import 'tailwindcss';
+
+@theme inline {
+  --font-sans: 'Geist', 'Geist Fallback', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'Geist Mono', 'Geist Mono Fallback', ui-monospace, monospace;
+
+  --color-background: #ffffff;
+  --color-foreground: #0f2340;
+
+  --color-primary: #0b84f3;
+  --color-primary-foreground: #ffffff;
+
+  --color-muted: #f4f7fb;
+  --color-muted-foreground: #5b6b82;
+
+  --color-card: #ffffff;
+  --color-card-foreground: #0f2340;
+
+  --color-border: #d9e3ee;
+  --color-input: #d9e3ee;
+  --color-ring: #0b84f3;
+
+  --color-accent: #eef4fc;
+  --color-accent-foreground: #0b84f3;
+
+  --color-success: #16a34a;
+  --color-warning: #f59e0b;
+
+  --radius: 14px;
+  --radius-sm: 10px;
+  --radius-lg: 16px;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+  }
+}
+
+/* Hide scrollbars on horizontal reel rails while keeping scroll */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
