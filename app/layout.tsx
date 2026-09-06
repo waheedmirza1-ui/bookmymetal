@@ -24,6 +24,10 @@ export const metadata: Metadata = {
     'machinery',
     'industrial products',
   ],
+  icons: {
+    icon: '/brand/bookmymetal-mark.svg',
+    apple: '/brand/bookmymetal-mark.svg',
+  },
 }
 
 export const viewport: Viewport = {

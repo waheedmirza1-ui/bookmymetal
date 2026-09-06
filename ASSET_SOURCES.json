@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "branch": "next-marketplace-hostinger",
+  "purpose": "Source and rights tracking for marketplace reel poster images.",
+  "assets": [
+    { "path": "public/reels/agriculture.png", "source": "Existing branch asset", "rightsStatus": "License/provenance confirmation required before commercial production use" },
+    { "path": "public/reels/construction.png", "source": "Existing branch asset", "rightsStatus": "License/provenance confirmation required before commercial production use" },
+    { "path": "public/reels/electronics.png", "source": "Existing branch asset", "rightsStatus": "License/provenance confirmation required before commercial production use" },
+    { "path": "public/reels/energy.png", "source": "Existing branch asset", "rightsStatus": "License/provenance confirmation required before commercial production use" },
+    { "path": "public/reels/furniture.png", "source": "Existing branch asset", "rightsStatus": "License/provenance confirmation required before commercial production use" },
+    { "path": "public/reels/healthcare.png", "source": "Existing branch asset", "rightsStatus": "License/provenance confirmation required before commercial production use" },
+    { "path": "public/reels/industrial.png", "source": "Existing branch asset", "rightsStatus": "License/provenance confirmation required before commercial production use" },
+    { "path": "public/reels/logistics.png", "source": "Existing branch asset", "rightsStatus": "License/provenance confirmation required before commercial production use" },
+    { "path": "public/reels/machinery.png", "source": "Existing branch asset", "rightsStatus": "License/provenance confirmation required before commercial production use" },
+    { "path": "public/reels/packaging.png", "source": "Existing branch asset", "rightsStatus": "License/provenance confirmation required before commercial production use" },
+    { "path": "public/reels/services.png", "source": "Existing branch asset", "rightsStatus": "License/provenance confirmation required before commercial production use" },
+    { "path": "public/reels/textiles.png", "source": "Existing branch asset", "rightsStatus": "License/provenance confirmation required before commercial production use" }
+  ]
+}
