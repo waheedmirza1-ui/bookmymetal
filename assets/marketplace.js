@@ -24,5 +24,18 @@
   document.querySelectorAll('.filter').forEach((button) => button.addEventListener('click', () => { activeFilter = button.dataset.filter; document.querySelectorAll('.filter').forEach((item) => item.classList.toggle('active', item === button)); renderReels(); }));
   fetch('../api/session.php?action=me', { credentials: 'include' }).then((response) => response.ok ? response.json() : null).then((data) => renderHeader(data && data.user)).catch(() => {});
   fetch('../api/marketplace-products.php').then((response) => response.ok ? response.json() : Promise.reject()).then((data) => { listings = data.results || []; renderReels(); }).catch(() => { listingCount.textContent = 'Seller videos are currently unavailable'; reelGrid.innerHTML = '<div class="reel-empty">Approved supplier reels are currently unavailable. Please refresh and try again.</div>'; });
-  if (window.BMMMarketplaceData) categoryGrid.innerHTML = window.BMMMarketplaceData.categories.slice(0, 12).map((category) => '<a href="../categories/?category=' + encodeURIComponent(category.slug) + '">' + safe(category.name) + '</a>').join('');
+  if (window.BMMMarketplaceData) {
+    const previewVideo = '../assets/videos/bookmymetal-launch-69s.mp4';
+    const previewPoster = '../assets/images/bookmymetal-platform-demo-poster.png';
+    categoryGrid.innerHTML = window.BMMMarketplaceData.categories.slice(0, 12).map((category) => '<a class="category-card" href="../categories/?category=' + encodeURIComponent(category.slug) + '"><video class="category-preview" muted loop playsinline preload="none" poster="' + previewPoster + '" aria-hidden="true"><source src="' + previewVideo + '" type="video/mp4"></video><span class="category-shade" aria-hidden="true"></span><span class="category-name">' + safe(category.name) + '</span><span class="category-watch" aria-hidden="true">Preview <b>▶</b></span></a>').join('');
+    categoryGrid.querySelectorAll('.category-card').forEach((card) => {
+      const video = card.querySelector('video');
+      const playPreview = () => video.play().catch(() => {});
+      const stopPreview = () => { video.pause(); video.currentTime = 0; };
+      card.addEventListener('pointerenter', playPreview);
+      card.addEventListener('pointerleave', stopPreview);
+      card.addEventListener('focusin', playPreview);
+      card.addEventListener('focusout', stopPreview);
+    });
+  }
 })();
